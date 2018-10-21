@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Suma de Numeros Naturales de 3 y 5</title>
+	<script type="text/javascript">
+		function Resultado() {
+			NL = document.getElementById('NumLim').value;
+			var ResSum = 0;
+			for (var i = 0; i < NL; i++) {
+				if (i%3 == 0 || i%5 == 0) {
+					ResSum = ResSum + i;
+					console.log(ResSum, i);
+				}
+			}
+
+			document.getElementById('Resultado').value = ResSum;
+			ResSum = 0;
+		}
+
+		function ResultadoPrimo() {
+			var position = parseInt(document.getElementById('Pos').value);
+			var posreresu = []; 
+			//console.log("Inicio:", position, posreresu);
+			var divd = 2;
+			var cont = 0;
+
+			for (var valorR = 2; posreresu.length < position; valorR++) {
+				for (var divd=1; cont < 3 && divd <= valorR; divd++) {
+					//console.log("valorR:", valorR,"divd:", divd);
+						if(valorR%divd == 0){
+							cont += 1;
+							//console.log("valorR:", valorR,"divd:", divd,"cont:", cont);
+						}
+				}
+				if(cont <= 2){
+					posreresu.push(valorR);
+					//console.log("Posreresu Array:", posreresu);
+				}
+				cont = 0;
+			}
+			document.getElementById('ResultadoPrim').value = posreresu[position - 1];
+		}
+	</script>
+</head>
+<body>
+	<div>
+		<label for="NumLim">Numero Limite:</label>
+		<input id="NumLim" type="text" name="NumLimite" placeholder="abajo de...">
+		<br>
+		<label for="Resultado">Resultado:</label>
+		<input id="Resultado" type="text" name="ResultadoF" placeholder="Resultado Final">
+		<br>
+		<button onclick="Resultado()">Resultado</button>
+	</div>
+	<div>
+		<label for="Pos">Posición:</label>
+		<input id="Pos" type="text" name="PosN" placeholder="Posición">
+		<br>
+		<label for="ResultadoPrim">Resultado:</label>
+		<input id="ResultadoPrim" type="text" name="ResultadoP" placeholder="Num. Primo">
+		<br>
+		<button onclick="ResultadoPrimo()">Resultado</button>
+	</div>
+</body>
+</html>
