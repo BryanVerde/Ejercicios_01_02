@@ -2,18 +2,51 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<style type="text/css">
+		div{
+			background-color: #DEDEDE;
+            padding: 2%;
+            margin-right: 50%;
+		}
+		.a{
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+        .b{
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        button{
+	        width: 100%;
+	        background-color: #494949;
+	        color: white;
+	        padding: 12px 20px;
+	        margin: 8px 0px;
+	        border: none;
+	        border-radius: 4px;
+	        cursor: pointer;
+	        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+        button:hover{
+            background-color: #000000;
+        }
+        i.iconb{
+			font-size: 1vw;
+			color: lightgrey;
+		}
+	</style>
 	<title>Suma de Numeros Naturales de 3 y 5</title>
 	<script type="text/javascript">
 		function Resultado() {
 			NL = document.getElementById('NumLim').value;
 			var ResSum = 0;
 			for (var i = 0; i < NL; i++) {
+				//console.log("i:", i, "NL", NL);
 				if (i%3 == 0 || i%5 == 0) {
 					ResSum = ResSum + i;
-					console.log(ResSum, i);
+					//console.log(ResSum, i);
 				}
 			}
-
 			document.getElementById('Resultado').innerHTML = ResSum;
 			ResSum = 0;
 		}
@@ -22,10 +55,9 @@
 			var position = parseInt(document.getElementById('Pos').value);
 			var posreresu = []; 
 			//console.log("Inicio:", position, posreresu);
-			var divd = 2;
 			var cont = 0;
 
-			for (var valorR = 2; posreresu.length < position; valorR++) {
+			for (var valorR = 2, plen = posreresu.length; plen < position; valorR++) {
 				for (var divd=1; cont < 3 && divd <= valorR; divd++) {
 					//console.log("valorR:", valorR,"divd:", divd);
 						if(valorR%divd == 0){
@@ -35,6 +67,7 @@
 				}
 				if(cont <= 2){
 					posreresu.push(valorR);
+					plen++;
 					//console.log("Posreresu Array:", posreresu);
 				}
 				cont = 0;
@@ -42,9 +75,11 @@
 			document.getElementById('ResultadoPrim').innerHTML = posreresu[position - 1];
 		}
 	</script>
+	<script src="https://use.fontawesome.com/c664f7add3.js"></script>
 </head>
 <body>
-	<div>
+	<div class="a">
+		<h3>Suma de Numeros naturales multiplos de 3  o 5:</h3>
 		<label for="NumLim">Numero Limite:</label>
 		<input id="NumLim" type="text" name="NumLimite" placeholder="abajo de...">
 		<br>
@@ -54,7 +89,8 @@
 		<br>
 		<button onclick="Resultado()">Resultado</button>
 	</div>
-	<div>
+	<div class="b">
+		<h3>Numero primo por posición:</h3>
 		<label for="Pos">Posición:</label>
 		<input id="Pos" type="text" name="PosN" placeholder="Posición">
 		<br>
